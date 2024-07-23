@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded',function(){
         "Believe you can and you're halfway there. - Encouragment"
     ];
     
-    function showRandomQuote() {
+    function displayRandomQuote() {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         const randomQuote = quotes[randomIndex];
     
         const quoteElement = document.createElement('div');
-        quoteElement.textContent = randomQuote;
+        quoteElement.innerHTML = randomQuote;
         document.getElementById('quoteDisplay').appendChild(quoteElement);
     }
     function createAddForm() {
