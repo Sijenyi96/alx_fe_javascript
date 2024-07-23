@@ -98,6 +98,31 @@ document.addEventListener('DOMContentLoaded',function(){
         const quoteDisplay = document.getElementById('quoteDisplay');
         quoteDisplay.innerHTML = '';
       } 
+      
+        function populateCategories() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const categories = quotes.map(quote => quote.category); 
+            const uniqueCategories = [...new Set(categories)]; 
+        
+            categoryFilter.innerHTML = '<option value="all">All Categories</option>'; 
+            uniqueCategories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+        
+        function filterQuotes() {
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const filteredQuotes = selectedCategory === 'all'
+                ? quotes
+                : quotes.filter(quote => quote.category === selectedCategory);
+            
+            const quoteContainer = document.getElementById('quoteContainer');
+            quoteContainer.innerHTML = '';
+        
+      }
     
     createAddForm();
     showRandomQuote();
