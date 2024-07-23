@@ -16,36 +16,36 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('quoteDisplay').appendChild(quoteElement);
     }
     function addQuote() {
-    const createAddQuoteForm = document.createElement('form')
+    const createAddQuoteForm = document.createElement('createAddQuoteForm')
     const newQuoteText = document.createElement('label');
     newQuoteText.textContent = 'Enter a new quote';
-    form.appendChild(newQuoteText)
+    createAddQuoteForm.appendChild(newQuoteText)
 
     const input = document.createElement('input');
     input.type = 'text';
     input.name='newQuote'
-    form.appendChild(input)
+    createAddQuoteForm.appendChild(input)
 
     const newCategory = document.createElement('label');
     newCategory.textContent = 'Enter quote category:';
-    form.appendChild(newCategory)
+    createAddQuoteForm.appendChild(newCategory)
 
 
     const categoryInput = document.createElement('input');
      categoryInput.type = 'text';
     categoryInput.name = 'quoteCategory';
-    form.appendChild(categoryInput)
+    createAddQuoteForm.appendChild(categoryInput)
     
         const submitButton = document.createElement('button');
         submitButton.type = 'submit';
         submitButton.textContent = 'Add Quote';
-        form.appendChild(submitButton);
+        createAddQuoteForm.appendChild(submitButton);
 
         
         const exportQuotesButton = document.getElementById('exportQuotesButton');
-        exportQuotesButton.type= 'submit';
-        exportQuotesButton.textContent='Export Quotes'
-        form.appendChild(exportQuotesButton)
+      
+        
+        
         
         function exportQuotes(){
         const json= JSON.stringify(quotes,null, 2);
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded',function(){
         console.log(url)
         }
         
-        form.addEventListener('submit', function(event) {
+        createAddQuoteForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const newQuote = input.value.trim();
             if (newQuote) {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded',function(){
             localStorage.getItem('quotes')
         });
         
-        document.body.appendChild(form);
+        document.body.appendChild(createAddQuoteForm);
     }
     
     
@@ -124,12 +124,24 @@ document.addEventListener('DOMContentLoaded',function(){
         
       }
 
-      function fetchQuotesFromServer(){
-        
-      }
+       async function fetchQuotesFromServer(){
+            try {
+                const response = await fetch('https://jsonplaceholder.typicode.com/post');
+                  if (!response.ok){
+                    throw new Error('Network response was not ok')
+                  }
+                  const data = await response.json();
+                  quotes= data.slice(0,10).map(post=> ({
+                    text: post.body,
+                  }))
+                  saveQuotes();
+            } catch (error) {
+                
+            }
+       }
     
-    createAddForm();
-    showRandomQuote();
+    addQuote();
+    displayRandomQuote();
     
     })
 
