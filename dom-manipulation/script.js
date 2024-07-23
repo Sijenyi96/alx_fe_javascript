@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded',function(){
                 
             }
        }
-     function synchQuotes(){
-      
+     function syncQuotes(){
+
      }
     addQuote();
     displayRandomQuote();
