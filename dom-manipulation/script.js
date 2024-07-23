@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',function(){
         quoteElement.innerHTML = randomQuote;
         document.getElementById('quoteDisplay').appendChild(quoteElement);
     }
-    function createAddForm() {
+    function addQuote() {
     const form = document.createElement('form')
     const newQuoteText = document.createElement('label');
     newQuoteText.textContent = 'Enter a new quote';
