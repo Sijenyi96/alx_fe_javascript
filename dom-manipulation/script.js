@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded',function(){
         form.appendChild(submitButton);
 
         
-        const exportQuotesButton = document.createElement('button');
+        const exportQuotesButton = document.getElementById('exportQuotesButton');
         exportQuotesButton.type= 'submit';
-        exportQuotesButton.textContent='Download link'
+        exportQuotesButton.textContent='Export Quotes'
         form.appendChild(exportQuotesButton)
         
         function exportQuotes(){
