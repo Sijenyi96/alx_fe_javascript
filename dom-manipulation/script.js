@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     throw new Error('Network response was not ok')
                   }
                   const data = await response.json();
+                  console.log('Quotes synced with server!', data);
                   quotes= data.slice(0,10).map(post=> ({
                     text: post.body,
                   }))
@@ -147,7 +148,6 @@ document.addEventListener('DOMContentLoaded',function(){
        }
      function syncQuotes(){
            const intervalid = setInterval(displayRandomQuote, 5000)
-           const syncMessage = document.getElementById('syncMessage');
      }
     addQuote();
     displayRandomQuote();
