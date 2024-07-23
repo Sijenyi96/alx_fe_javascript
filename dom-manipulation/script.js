@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }
        }
      function syncQuotes(){
-
+           const intervalid = setInterval(syncQuotes, 2000)
      }
     addQuote();
     displayRandomQuote();
