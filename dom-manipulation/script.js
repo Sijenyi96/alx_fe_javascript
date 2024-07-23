@@ -123,6 +123,10 @@ document.addEventListener('DOMContentLoaded',function(){
             quoteContainer.innerHTML = '';
         
       }
+
+      function fetchQuotesFromServer(){
+        
+      }
     
     createAddForm();
     showRandomQuote();
