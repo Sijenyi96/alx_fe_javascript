@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 addQuoteToDOM(newQuote);
                 input.value = '';
             }
-            localStorage.setItem("quotes",quotes)
+            localStorage.getItemItem("quotes",quotes)
         });
         
         document.body.appendChild(form);
