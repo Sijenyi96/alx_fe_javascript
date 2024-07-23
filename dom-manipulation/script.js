@@ -40,6 +40,23 @@ document.addEventListener('DOMContentLoaded',function(){
         submitButton.type = 'submit';
         submitButton.textContent = 'Add Quote';
         form.appendChild(submitButton);
+
+        
+        const exportQuotesButton = document.createElement('button');
+        exportQuotesButton.type= 'submit';
+        exportQuotesButton.textContent='Download link'
+        form.appendChild(exportQuotesButton)
+        
+        function exportQuotes(){
+        const json= JSON.stringify(quotes,null, 2);
+        const blob = newBlob([json],{ type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'quotes.json';
+        a.click();
+        console.log(url)
+        }
         
         form.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -49,6 +66,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 addQuoteToDOM(newQuote);
                 input.value = '';
             }
+            localStorage.setItem("quotes",quotes)
         });
         
         document.body.appendChild(form);
@@ -61,6 +79,24 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('quoteDisplay').appendChild(quoteElement);  
         
     }
+
+    function importFromJsonFile(event) {
+        const fileReader = new FileReader();
+        fileReader.onload = function(event) {
+          const importedQuotes = JSON.parse(event.target.result);
+          quotes.push(...importedQuotes);
+          saveQuotes();
+          alert('Quotes imported successfully!');
+        };
+        fileReader.readAsText(event.target.files[0]);
+        console.log(fileReader)
+        console.log(importedQuotes)
+      }
+    
+      function updateQuoteDisplay() {
+        const quoteDisplay = document.getElementById('quoteDisplay');
+        quoteDisplay.innerHTML = '';
+      } 
     
     createAddForm();
     showRandomQuote();
