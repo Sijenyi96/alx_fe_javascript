@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',function(){
     function createAddForm() {
     const form = document.createElement('form')
     const newQuoteText = document.createElement('label');
-    newQuoteText.textContent = 'enter new quote';
+    newQuoteText.textContent = 'Enter a new quote';
     form.appendChild(newQuoteText)
 
     const input = document.createElement('input');
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded',function(){
     form.appendChild(input)
 
     const newCategory = document.createElement('label');
-    newCategory.textContent = 'enter category:';
+    newCategory.textContent = 'Enter quote category:';
     form.appendChild(newCategory)
 
 
